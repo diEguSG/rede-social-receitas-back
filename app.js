@@ -9,7 +9,7 @@ const app = express()
 
 app.use(cors());
 app.use(express.json());
-app.use("/user", user_router);
+app.use("/usuario", user_router);
 
 app.listen(3003, console.log("Server Online"))
 
