@@ -13,7 +13,8 @@ export async function criar_usuario_controller(req, res){
         nome: req.body.nome,
         email: req.body.email,
         senha: req.body.senha,
-        id_tipo_usuario: req.body.id_tipo_usuario
+        id_tipo_usuario: req.body.id_tipo_usuario,
+        id_situacao_usuario: req.body.id_situacao_usuario
     }
 
     const usuario = await criar_usuario_model(dados);

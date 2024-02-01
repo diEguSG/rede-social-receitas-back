@@ -15,7 +15,7 @@ export async function seleciona_todos_usuarios_model(){
 export async function criar_usuario_model(dados){
 
     try {
-        const [result, fields] = await connection.query(`insert into usuario(nome, email, senha, id_tipo_usuario) values ("${dados.nome}", "${dados.email}", "${dados.senha}", ${dados.id_tipo_usuario});`)           
+        const [result, fields] = await connection.query(`insert into usuario(nome, email, senha, id_tipo_usuario, id_situacao_usuario) values ("${dados.nome}", "${dados.email}", "${dados.senha}", ${dados.id_tipo_usuario}, ${dados.id_situacao_usuario});`)           
         console.log(result);
         return result;
 
