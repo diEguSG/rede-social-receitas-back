@@ -1,7 +1,8 @@
 import {Router} from "express";
-import {seleciona_todos_usuarios_controller, criar_usuario_controller, atualizar_usuario_controller} from "../controller/usuario.controller.js";
+import {seleciona_usuario_controller, criar_usuario_controller, atualizar_usuario_controller} from "../controller/usuario.controller.js";
 
-export const user_router = Router();
-user_router.get("", seleciona_todos_usuarios_controller);
-user_router.post("", criar_usuario_controller);
-user_router.patch("/:id_usuario", atualizar_usuario_controller);
+export const login = Router();
+export const cadastro = Router();
+login.post("", seleciona_usuario_controller);
+cadastro.post("", criar_usuario_controller);
+cadastro.patch("/:id_usuario", atualizar_usuario_controller);

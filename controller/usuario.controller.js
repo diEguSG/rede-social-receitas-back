@@ -1,9 +1,15 @@
-import {seleciona_todos_usuarios_model} from "../models/usuario.model.js"
+import {seleciona_usuario_model} from "../models/usuario.model.js"
 import {criar_usuario_model} from "../models/usuario.model.js";
 import {atualizar_usuario_model} from "../models/usuario.model.js"
 
-export async function seleciona_todos_usuarios_controller(req, res){
-    const usuario = await seleciona_todos_usuarios_model();
+export async function seleciona_usuario_controller(req, res){
+
+    const dados = {
+        email: req.body.email,
+        senha: req.body.senha
+    }
+
+    const usuario = await seleciona_usuario_model(dados);
     return res.json(usuario);
 }
 

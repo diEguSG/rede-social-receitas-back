@@ -2,11 +2,14 @@ import { rejects } from "assert";
 import {connection} from "../server.js"
 import { resolve } from "path";
 
-export async function seleciona_todos_usuarios_model(){
+export async function seleciona_usuario_model(dados){
     
     try {
-        const [result, fields] = await connection.query('select * from usuario;');
+
+        const [result, fields] = await connection.query(`select * from usuario where email="${dados.email}" and senha="${dados.senha}"`);
+        console.log(result);
         return result;
+        
     } catch (error) {
         console.log(error)
     }       
