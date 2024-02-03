@@ -7,7 +7,6 @@ export async function seleciona_usuario_model(dados){
     try {
 
         const [result, fields] = await connection.query(`select * from usuario where email="${dados.email}" and senha="${dados.senha}"`);
-        console.log(result);
         return result;
         
     } catch (error) {
@@ -18,8 +17,17 @@ export async function seleciona_usuario_model(dados){
 export async function criar_usuario_model(dados){
 
     try {
-        const [result, fields] = await connection.query(`insert into usuario(nome, email, senha, id_tipo_usuario, id_situacao_usuario) values ("${dados.nome}", "${dados.email}", "${dados.senha}", ${dados.id_tipo_usuario}, ${dados.id_situacao_usuario});`)           
-        console.log(result);
+
+        const [result, field] = await connection.query(`select * from usuario where email="${dados.email}";`)
+
+        console.log(result.length);
+
+        if(result.length == 0){
+            const [result, fields] = await connection.query(`insert into usuario(nome, email, senha, id_tipo_usuario, id_situacao_usuario) values ("${dados.nome}", "${dados.email}", "${dados.senha}", ${dados.id_tipo_usuario}, ${dados.id_situacao_usuario});`)           
+            console.log(result);
+            return result;
+        }
+
         return result;
 
     } catch (error) {

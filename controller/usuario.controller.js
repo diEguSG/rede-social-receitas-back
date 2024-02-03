@@ -11,21 +11,19 @@ export async function seleciona_usuario_controller(req, res){
         senha: req.body.senha
     }
 
-
-
     const usuario = await seleciona_usuario_model(dados);
 
     if(usuario.length == 0){
         return res.status(404).json({Erro: "Login Inválido"})
     }
 
-    console.log(env.SECRETKEY);
+    console.log(process.env.SECRETKEY);
 
     const token = jwt.sign({
         tipo_usuario: usuario[0].tipo_usuario,
         id_usuario: usuario[0].id
     },
-    "Chave Secreta",{
+    "process.env.SECRETKEY",{
         expiresIn: "24h",
         subject: String(usuario[0].id)
     }
@@ -45,7 +43,12 @@ export async function criar_usuario_controller(req, res){
     }
 
     const usuario = await criar_usuario_model(dados);
-    return res.json(usuario)
+
+    if(usuario.length == 0){
+        return res.status(404).json({Erro: "E-mail já está sendo Usado"})
+    }
+
+    return res.status(200).json("OK");
 }
 
 export async function atualizar_usuario_controller(req, res){
