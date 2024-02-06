@@ -1,11 +1,8 @@
-import mysql from "mysql";
+import mysql from "mysql2/promise";
 
-export const connection = 
-
-    mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'rede_social',
-    }
-    )
+export const connection = await mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'rede_social'
+});
