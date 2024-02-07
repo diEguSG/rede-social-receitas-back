@@ -27,7 +27,7 @@ export async function seleciona_usuario_controller(req, res){
     }
     )
 
-    return res.status(200).json({acesso_token: token, tipo_usuario: usuario[0].id_tipo_usuario});
+    return res.status(200).json({acesso_token: token, tipo_usuario: usuario[0].id_tipo_usuario, id_usuario: usuario[0].id});
 }
 
 export async function criar_usuario_controller(req, res){
