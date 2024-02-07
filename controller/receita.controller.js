@@ -1,4 +1,4 @@
-import { criar_receitas_model, seleciona_todos_receita_model } from "../models/receita.model.js";
+import { criar_receitas_model, seleciona_todos_receita_model, seleciona_todas_receitas_usuario_model } from "../models/receita.model.js";
 
 export async function seleciona_todos_receitas_controller(req, res){
     const receita = await seleciona_todos_receita_model();
@@ -12,4 +12,13 @@ export async function criar_receitas_controller(req,res){
     const id_usuario = req.body.id_usuario; 
     const receita =  await criar_receitas_model(titulo,descricao,imagem,id_categoria,id_usuario);
     return res.json(receita)
+}
+
+
+export async function seleciona_todas_receitas_usuario_controller(req, res){
+    
+    const id_usuario = req.body.id_usuario;
+
+    const receita = await seleciona_todas_receitas_usuario_model(id_usuario);
+    return res.status(200).json({receita: receita});
 }
