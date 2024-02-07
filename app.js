@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/login", login);
 app.use("/cadastro", cadastro);
-app.use("/user", user_router);
+
 app.use("/receita",receita_router)
 
 app.listen(3003, console.log("Server Online"));

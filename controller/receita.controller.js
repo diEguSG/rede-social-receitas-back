@@ -8,7 +8,7 @@ export async function criar_receitas_controller(req,res){
     const titulo = req.body.titulo;
     const descricao = req.body.descricao;
     const imagem = req.body.imagem;
-    const id_categoria = req.body.id_categoria;
+    const id_categoria = req.body.id_categoria; 
     const id_usuario = req.body.id_usuario; 
     const receita =  await criar_receitas_model(titulo,descricao,imagem,id_categoria,id_usuario);
     return res.json(receita)
