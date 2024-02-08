@@ -13,3 +13,7 @@ export async function criar_receitas_controller(req,res){
     const receita =  await criar_receitas_model(titulo,descricao,imagem,id_categoria,id_usuario);
     return res.json(receita)
 }
+export async function curtida_controller(req,res){
+    const id = req.params.id
+    return res.status(200).json({id:id})
+}
