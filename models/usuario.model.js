@@ -2,7 +2,7 @@ import { rejects } from "assert";
 import {connection} from "../server.js"
 import { resolve } from "path";
 
-export async function seleciona_usuario_model(dados){
+export async function seleciona_usuario_login_model(dados){
     
     try {
 
@@ -46,10 +46,21 @@ export async function atualizar_usuario_model(dados, id_usuario){
             ...dados
         }
 
-        const [result, field] = await connection.query(`update usuario set nome="${dados_novos.nome}", email="${dados_novos.email}", senha="${dados_novos.senha}", id_tipo_usuario=${dados_novos.id_tipo_usuario} where id=${id_usuario};`)
+        const [result, field] = await connection.query(`update usuario set nome="${dados_novos.nome}", email="${dados_novos.email}", telefone="${dados_novos.telefone}", senha="${dados_novos.senha}", id_tipo_usuario=${dados_novos.id_tipo_usuario} where id=${id_usuario};`)
         return result;
 
     } catch (error) {
         console.log(error)
     }
+}
+
+export async function seleciona_dados_usuario_model(id_usuario){
+
+    try {
+        const [result, fields] = await connection.query(`select * from usuario where id = ${id_usuario};`);
+        return result;
+    } catch (error) {
+        console.log(error)
+    }
+
 }
