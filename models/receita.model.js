@@ -21,3 +21,11 @@ export async function criar_receitas_model(titulo, descricao, imagem, id_categor
         console.log(error)
     }
 }
+export async function curtida_model(id, curtida){
+    const [receita, fields] = await connection.query(`select * from receita where id = ${id}`)
+    console.log(receita)
+    await connection.query(`update receita set curtida=${curtida ? receita[0].curtida + 1 : receita[0].curtida-1} where id=${receita[0].id}`)
+    
+    const [receita_atualizada, field_atualizado] = await connection.query(`select * from receita where id = ${id}`)
+   return receita_atualizada[0]
+}

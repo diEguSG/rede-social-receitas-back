@@ -1,4 +1,4 @@
-import { criar_receitas_model, seleciona_todos_receita_model } from "../models/receita.model.js";
+import { criar_receitas_model, curtida_model, seleciona_todos_receita_model } from "../models/receita.model.js";
 
 export async function seleciona_todos_receitas_controller(req, res){
     const receita = await seleciona_todos_receita_model();
@@ -15,5 +15,9 @@ export async function criar_receitas_controller(req,res){
 }
 export async function curtida_controller(req,res){
     const id = req.params.id
-    return res.status(200).json({id:id})
+    const value = req.body.curtida;
+    const response = await curtida_model(id,value)
+
+    return res.status(200).json(response)
+
 }
