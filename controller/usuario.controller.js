@@ -42,8 +42,8 @@ export async function criar_usuario_controller(req, res){
 
     const usuario = await criar_usuario_model(dados);
 
-    if(usuario.status_mail == 720){
-        return res.status(720).json({error_mail: "Dados informados já estão em uso!"})
+    if(!usuario){
+        return res.status(409).json({error_mail: "Dados informados já estão em uso!"})
     }
 
     return res.status(200).json("OK");
@@ -55,7 +55,7 @@ export async function atualizar_usuario_controller(req, res){
     const id_usuario = req.params.id_usuario;
 
     const usuario = await atualizar_usuario_model(dados, id_usuario);
-    return res.json(usuario);
+    return res.status(200).json("OK", usuario);
 }
 
 export async function seleciona_dados_usuario_controller(req, res){

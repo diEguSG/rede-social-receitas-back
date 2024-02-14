@@ -12,9 +12,10 @@ export async function seleciona_todos_receita_model(){
     }   
 }
 export async function criar_receitas_model(titulo, descricao, imagem, id_categoria, id_usuario){
-    
+
     try {
         const data = new Date()
+
         const [result, fields] = await connection.query(`insert into receita (titulo, descricao, imagem, data_criacao, id_categoria, id_usuario) values ('${titulo}', '${descricao}', '${imagem}', '${data}', '${id_categoria}', ${id_usuario});`)            
         return result;
 
