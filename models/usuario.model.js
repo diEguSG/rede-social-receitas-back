@@ -44,7 +44,7 @@ export async function atualizar_usuario_model(dados, id_usuario){
             ...dados
         }
 
-        const [result, field] = await connection.query(`update usuario set nome="${dados_novos.nome}", email="${dados_novos.email}", telefone="${dados_novos.telefone}", senha="${dados_novos.senha}", id_tipo_usuario=${dados_novos.id_tipo_usuario} where id=${id_usuario};`)
+        const [result, field] = await connection.query(`update usuario set nome="${dados_novos.nome}", email="${dados_novos.email}", telefone="${dados_novos.telefone}", senha="${dados_novos.senha}", id_tipo_usuario=${dados_novos.id_tipo_usuario}, id_situacao_usuario=${dados_novos.id_situacao_usuario} where id=${id_usuario};`)
         return result;
 
     } catch (error) {
