@@ -29,3 +29,8 @@ export async function curtida_model(id, curtida){
     const [receita_atualizada, field_atualizado] = await connection.query(`select * from receita where id = ${id}`)
    return receita_atualizada[0]
 }
+export async function seleciona_receita_model(id){
+    const [receita, fields] = await connection.query(`select * from receita where id = ${id}`)
+    console.log(receita)
+   return receita[0]
+}
