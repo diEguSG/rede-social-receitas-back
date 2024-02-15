@@ -33,3 +33,13 @@ export async function seleciona_todas_receitas_usuario_model(id_usuario){
         console.log(error)
     }
 }
+
+export async function seleciona_curtidas_receitas_usuario_model(id_usuario){
+
+    try {
+        const [result, fields] = await connection.query(`select SUM(curtida) AS 'curtida' from receita where id_usuario=${id_usuario};`); 
+        return result;
+    } catch (error) {
+        console.log(error)
+    }
+}
