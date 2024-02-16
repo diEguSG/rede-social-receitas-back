@@ -1,8 +1,8 @@
-import { criar_receitas_model,curtida_model, seleciona_receita_model, seleciona_todos_receita_model,seleciona_todas_receitas_usuario_model, seleciona_curtidas_receitas_usuario_model } from "../models/receita.model.js";
+import { criar_receitas_model,curtida_model, seleciona_receita_model, seleciona_todas_receita_model,seleciona_todas_receitas_usuario_model, seleciona_curtidas_receitas_usuario_model } from "../models/receita.model.js";
 
-export async function seleciona_todos_receitas_controller(req, res){
-    const receita = await seleciona_todos_receita_model();
-    return res.json(receita);
+export async function seleciona_todas_receitas_controller(req, res){
+    const receita = await seleciona_todas_receita_model();
+    return res.status(200).json(receita);
 }
 export async function criar_receitas_controller(req,res){
     const titulo = req.body.titulo;

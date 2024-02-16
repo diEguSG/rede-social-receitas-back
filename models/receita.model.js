@@ -1,7 +1,7 @@
 import { seleciona_todas_receitas_usuario_controller } from "../controller/receita.controller.js";
 import { connection } from "../server.js";
 
-export async function seleciona_todos_receita_model(){
+export async function seleciona_todas_receita_model(){
     
     try {
         const [result, fields] = await connection.query('select * from receita;')
@@ -25,7 +25,6 @@ export async function criar_receitas_model(titulo, descricao, imagem, id_categor
 }
 export async function curtida_model(id, curtida){
     const [receita, fields] = await connection.query(`select * from receita where id = ${id}`)
-    console.log(receita)
     await connection.query(`update receita set curtida=${curtida ? receita[0].curtida + 1 : receita[0].curtida-1} where id=${receita[0].id}`)
     
     const [receita_atualizada, field_atualizado] = await connection.query(`select * from receita where id = ${id}`)
@@ -33,7 +32,6 @@ export async function curtida_model(id, curtida){
 }
 export async function seleciona_receita_model(id){
     const [receita, fields] = await connection.query(`select * from receita where id = ${id}`)
-    console.log(receita)
    return receita[0]
 }
 
