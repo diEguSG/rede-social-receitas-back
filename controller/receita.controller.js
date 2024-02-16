@@ -1,4 +1,4 @@
-import { criar_receitas_model,curtida_model, seleciona_receita_model, seleciona_todos_receita_model,seleciona_todas_receitas_usuario_model } from "../models/receita.model.js";
+import { criar_receitas_model,curtida_model, seleciona_receita_model, seleciona_todos_receita_model,seleciona_todas_receitas_usuario_model, seleciona_curtidas_receitas_usuario_model } from "../models/receita.model.js";
 
 export async function seleciona_todos_receitas_controller(req, res){
     const receita = await seleciona_todos_receita_model();
