@@ -9,3 +9,4 @@ receita_router.post("",criar_receitas_controller )
 receita_router.patch("/:id/curtida",curtida_controller )
 receita_router.get("/:id", seleciona_receita_controller);
 receita_usuario.post("", seleciona_todas_receitas_usuario_controller);
+receita_usuario.patch("/:id_usuario", seleciona_curtidas_receitas_usuario_controller)

@@ -22,13 +22,11 @@ export async function criar_usuario_model(dados){
         const [result, field] = await connection.query(`select * from usuario where email="${dados.email}";`)
 
         if(result.length == 1){
-            const result = {status_mail: 720};
-            return result;
+            return false;
         }
 
         if(result.length == 0){
             const [result, fields] = await connection.query(`insert into usuario(nome, email, senha, id_tipo_usuario, id_situacao_usuario) values ("${dados.nome}", "${dados.email}", "${dados.senha}", ${dados.id_tipo_usuario}, ${dados.id_situacao_usuario});`);
-            console.log(result);
             return result;
         }
 
@@ -46,7 +44,7 @@ export async function atualizar_usuario_model(dados, id_usuario){
             ...dados
         }
 
-        const [result, field] = await connection.query(`update usuario set nome="${dados_novos.nome}", email="${dados_novos.email}", telefone="${dados_novos.telefone}", senha="${dados_novos.senha}", id_tipo_usuario=${dados_novos.id_tipo_usuario} where id=${id_usuario};`)
+        const [result, field] = await connection.query(`update usuario set nome="${dados_novos.nome}", email="${dados_novos.email}", telefone="${dados_novos.telefone}", senha="${dados_novos.senha}", id_tipo_usuario=${dados_novos.id_tipo_usuario}, id_situacao_usuario=${dados_novos.id_situacao_usuario} where id=${id_usuario};`)
         return result;
 
     } catch (error) {

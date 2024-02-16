@@ -27,7 +27,7 @@ export async function seleciona_usuario_login_controller(req, res){
     }
     )
 
-    return res.status(200).json({acesso_token: token, tipo_usuario: usuario[0].id_tipo_usuario, id_usuario: usuario[0].id});
+    return res.status(200).json({acesso_token: token, tipo_usuario: usuario[0].id_tipo_usuario, id_usuario: usuario[0].id, id_situacao_usuario: usuario[0].id_situacao_usuario});
 }
 
 export async function criar_usuario_controller(req, res){
@@ -42,8 +42,8 @@ export async function criar_usuario_controller(req, res){
 
     const usuario = await criar_usuario_model(dados);
 
-    if(usuario.status_mail == 720){
-        return res.status(720).json({error_mail: "E-mail já está sendo Utilizado"})
+    if(!usuario){
+        return res.status(409).json({error_mail: "Dados informados já estão em uso!"})
     }
 
     return res.status(200).json("OK");
@@ -55,7 +55,7 @@ export async function atualizar_usuario_controller(req, res){
     const id_usuario = req.params.id_usuario;
 
     const usuario = await atualizar_usuario_model(dados, id_usuario);
-    return res.json(usuario);
+    return res.status(200).status(204).json(usuario);
 }
 
 export async function seleciona_dados_usuario_controller(req, res){
