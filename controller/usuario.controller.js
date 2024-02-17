@@ -60,8 +60,8 @@ export async function atualizar_usuario_controller(req, res){
 
 export async function seleciona_dados_usuario_controller(req, res){
     
-    const id_usuario = req.body.id_usuario;
+    const id_usuario = req.params.id_usuario;
 
     const usuario = await seleciona_dados_usuario_model(id_usuario);
-    return res.json({usuario: usuario[0]});
+    return res.status(200).json({usuario: usuario[0]});
 }
