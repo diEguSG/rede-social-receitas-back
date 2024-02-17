@@ -1,7 +1,7 @@
 import { seleciona_todas_receitas_usuario_controller } from "../controller/receita.controller.js";
 import { connection } from "../server.js";
-
-export async function seleciona_todas_receita_model(){
+import moment from "moment";
+export async function seleciona_todos_receita_model(){
     
     try {
         const [result, fields] = await connection.query('select * from receita;')
@@ -13,7 +13,8 @@ export async function seleciona_todas_receita_model(){
 }
 
 export async function criar_receitas_model(titulo, descricao, imagem, id_categoria, id_usuario){
-
+    const dataAtual = moment().format()
+    console.log(dataAtual)
     try {
 
         const [result, fields] = await connection.query(`insert into receita (titulo, descricao, imagem, id_categoria, id_usuario) values ('${titulo}', '${descricao}', '${imagem}', '${id_categoria}', ${id_usuario});`)            
