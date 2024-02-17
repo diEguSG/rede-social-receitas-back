@@ -4,7 +4,8 @@ export async function seleciona_todas_receitas_controller(req, res){
     const receita = await seleciona_todas_receita_model();
     return res.status(200).json(receita);
 }
-export async function criar_receitas_controller(req,res){
+
+export async function criar_receitas_controller(req, res){
     const titulo = req.body.titulo;
     const descricao = req.body.descricao;
     const imagem = req.body.imagem;
@@ -13,19 +14,20 @@ export async function criar_receitas_controller(req,res){
     const receita =  await criar_receitas_model(titulo,descricao,imagem,id_categoria,id_usuario);
     return res.json(receita)
 }
-export async function curtida_controller(req,res){
+
+export async function curtida_controller(req, res){
     const id = req.params.id
     const value = req.body.curtida;
     const response = await curtida_model(id,value)
 
     return res.status(200).json(response)
 }
+
 export async function  seleciona_receita_controller(req,res){
     const id = req.params.id
-    const response = await  seleciona_receita_model(id)
-    return res.json(response)
+    const receita = await seleciona_receita_model(id)
+    return res.status(200).json(receita)
 }
-
 
 export async function seleciona_todas_receitas_usuario_controller(req, res){
     
