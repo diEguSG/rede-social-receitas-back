@@ -26,7 +26,7 @@ export async function criar_usuario_model(dados){
         }
 
         if(result.length == 0){
-            const [result, fields] = await connection.query(`insert into usuario(nome, email, senha, id_tipo_usuario, id_situacao_usuario) values ("${dados.nome}", "${dados.email}", "${dados.senha}", ${dados.id_tipo_usuario}, ${dados.id_situacao_usuario});`);
+            const [result, fields] = await connection.query(`insert into usuario(nome, email, senha) values ("${dados.nome}", "${dados.email}", "${dados.senha}");`);
             return result;
         }
 
