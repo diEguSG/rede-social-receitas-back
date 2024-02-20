@@ -26,7 +26,7 @@ export async function criar_usuario_model(dados){
         }
 
         if(result.length == 0){
-            const [result, fields] = await connection.query(`insert into usuario(nome, email, senha) values ("${dados.nome}", "${dados.email}", "${dados.senha}");`);
+            const [result, fields] = await connection.query(`insert into usuario(nome, email, senha, imagem_perfil) values ("${dados.nome}", "${dados.email}", "${dados.senha}", "${dados.imagem_perfil}");`);
             return result;
         }
 
@@ -43,6 +43,8 @@ export async function atualizar_usuario_model(dados, id_usuario){
             ...dados_usuario[0],
             ...dados
         }
+
+        console.log(dados_novos);
 
         const [result, field] = await connection.query(`update usuario set nome="${dados_novos.nome}", email="${dados_novos.email}", telefone="${dados_novos.telefone}", senha="${dados_novos.senha}", id_tipo_usuario=${dados_novos.id_tipo_usuario}, id_situacao_usuario=${dados_novos.id_situacao_usuario} where id=${id_usuario};`)
         return result;

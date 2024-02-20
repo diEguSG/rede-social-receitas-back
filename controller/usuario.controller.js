@@ -35,7 +35,8 @@ export async function criar_usuario_controller(req, res){
     const dados = {
         nome: req.body.nome,
         email: req.body.email,
-        senha: req.body.senha
+        senha: req.body.senha,
+        imagem_perfil: "https://i.pinimg.com/550x/fd/b0/50/fdb050d4b24a2d0afacbf934113b0112.jpg"
     }
 
     const usuario = await criar_usuario_model(dados);
