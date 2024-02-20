@@ -15,9 +15,7 @@ export async function seleciona_todas_receita_model(){
 
 export async function criar_receitas_model(titulo, descricao, imagem, id_categoria, id_usuario){
     const dataAtual = moment().format()
-    console.log(dataAtual)
     try {
-
         const [result, fields] = await connection.query(`insert into receita (titulo, descricao, imagem, id_categoria, id_usuario) values ('${titulo}', '${descricao}', '${imagem}', '${id_categoria}', ${id_usuario});`)            
         return result;
 
