@@ -15,7 +15,6 @@ app.use("/login", login);
 app.use("/cadastro", cadastro);
 app.use("/receita", receita_router);
 app.use("/receita_usuario", receita_usuario);
-// app.use("/atualizar_cadastro", atualizar_cadastro);
 app.use("/admin_deletar_postagem", admin_deletar_postagem);
 
 app.listen(3003, console.log("Server Online"));
