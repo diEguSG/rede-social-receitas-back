@@ -14,7 +14,7 @@ export async function seleciona_todas_receitas_controller(req, res){
     const receita = await seleciona_todas_receita_model();
     receita.forEach((item)=>{
         if(item.data_criacao){
-            item.data_criacao = moment(item.data_criacao).format("DD [de] MMMM [de] YYYY")
+            item.data_criacao = moment(item.data_criacao).format("DD [de] MMM [de] YYYY")
         }
     })
     return res.status(200).json(receita);
