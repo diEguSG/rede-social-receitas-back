@@ -1,14 +1,20 @@
 import {connection} from "./server.js";
 import express from "express";
-import {user_router} from "./rotas/usuario.rotas.js";
+import {login, cadastro, atualizar_cadastro} from "./rotas/usuario.rotas.js";
 import cors from "cors";
+import { receita_router, receita_usuario } from "./rotas/receita.rotas.js";
+import { admin_deletar_postagem } from "./rotas/admin.rotas.js";
 
-connection.connect(console.log("Banco Conectado"));
+await connection.connect(console.log("Banco Conectado"));
 
 const app = express()
 
 app.use(cors());
 app.use(express.json());
-app.use("/user", user_router);
+app.use("/login", login);
+app.use("/cadastro", cadastro);
+app.use("/receita", receita_router);
+app.use("/receita_usuario", receita_usuario);
+app.use("/admin_deletar_postagem", admin_deletar_postagem);
 
-app.listen(3003, console.log("Server Online"))
+app.listen(3003, console.log("Server Online"));
